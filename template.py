@@ -32,7 +32,7 @@ for filepath in list_of_files:
     # splitting the file name and file separately
     filedir , filename = os.path.split(filepath)
 
-    if filedir != "":  # check if we get filedir or if its not empty
+    if filedir != "":  # check if we get filedir and is not empty
         os.makedirs(filedir , exist_ok=True)
         # make dir of name filedir and check if its is already existing or not if not then create a new dir
         logging.info(f"Creating directory; {filedir} for the file: {filename}")
