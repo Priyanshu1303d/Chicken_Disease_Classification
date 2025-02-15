@@ -1,45 +1,60 @@
-from cnnClassifier import logger
+from src.cnnClassifier import logger
 from cnnClassifier.pipeline .stage_01_data_ingestion import DataIngestionTrainingPipeline
 from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from cnnClassifier.pipeline.stage_03_training import TrainingPipeline
+from cnnClassifier.pipeline.stage_04_evaluation import EvaluationPipeline
 
 
-STAGE_NAME = "Data Ingestion"
+# STAGE_NAME = "Data Ingestion"
 
-if __name__ == "__main__":
-    try:
-        logger.info(f">>>>>>> stage {STAGE_NAME} started <<<<<<<")
-        data_ingestion = DataIngestionTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>> stage {STAGE_NAME} completed <<<<<<<<<\n\nx==============x")
+# if __name__ == "__main__":
+#     try:
+#         logger.info(f">>>>>>> stage {STAGE_NAME} started <<<<<<<")
+#         data_ingestion = DataIngestionTrainingPipeline()
+#         data_ingestion.main()
+#         logger.info(f">>>> stage {STAGE_NAME} completed <<<<<<<<<\n\nx==============x")
 
-    except Exception as e:
-        logger.exception(e)
-        raise e
+#     except Exception as e:
+#         logger.exception(e)
+#         raise e
     
 
-STAGE_NAME2 = "Prepare Base Model"
+# STAGE_NAME2 = "Prepare Base Model"
 
-if __name__ == "__main__":
-    try:
-        logger.info(f">>>>>>> stage {STAGE_NAME2} started <<<<<<<")
-        data_ingestion = PrepareBaseModelTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>> stage {STAGE_NAME2} completed <<<<<<<<<\n\nx==============x")
+# if __name__ == "__main__":
+#     try:
+#         logger.info(f">>>>>>> stage {STAGE_NAME2} started <<<<<<<")
+#         data_ingestion = PrepareBaseModelTrainingPipeline()
+#         data_ingestion.main()
+#         logger.info(f">>>> stage {STAGE_NAME2} completed <<<<<<<<<\n\nx==============x")
 
-    except Exception as e:
-        logger.exception(e)
-        raise e
+#     except Exception as e:
+#         logger.exception(e)
+#         raise e
     
 
-STAGE_NAME3 = "Training"
+# STAGE_NAME3 = "Training"
+
+# if __name__ == "__main__":
+#     try:
+#         logger.info(f"-------------------stage {STAGE_NAME3} started ---------------")
+#         training = TrainingPipeline()
+#         training.main()
+#         logger.info(f"-----------stage {STAGE_NAME3} completed successfully ---------<<\n\n----")
+#     except Exception as e:
+#         logger.exception(e)
+#         raise e
+    
+
+
+STAGE_NAME4 = "Evaluation"
 
 if __name__ == "__main__":
     try:
-        logger.info(f"-------------------stage {STAGE_NAME3} started ---------------")
-        training = TrainingPipeline()
+        logger.info(f"-------------------stage {STAGE_NAME4} started ---------------")
+        training = EvaluationPipeline()
         training.main()
-        logger.info(f"-----------stage {STAGE_NAME3} completed successfully ---------<<\n\n----")
+        logger.info(f"-----------stage {STAGE_NAME4} completed successfully ---------<<\n\n----")
     except Exception as e:
         logger.exception(e)
         raise e

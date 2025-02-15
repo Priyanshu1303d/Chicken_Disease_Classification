@@ -1,6 +1,6 @@
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_directories
-from cnnClassifier.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig)
+from cnnClassifier.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig, TrainingConfig, EvaluationConfig)
 import os
 
 
@@ -25,7 +25,7 @@ class ConfigurationManager:
             local_data_file=config.local_data_file,
             unzip_dir= config.unzip_dir
         )
-
+        
         return data_ingestion_config
 
     #Model
@@ -68,7 +68,7 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Chicken-fecal-images")
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Data/Train")
         create_directories([
             Path(training.root_dir)
         ])
@@ -85,3 +85,15 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+
+
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model='artifacts/training/model.keras',
+            training_data='artifacts/data_ingestion/Data/Train',
+            all_params= self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size= self.params.BATCH_SIZE)
+        return eval_config
+        
